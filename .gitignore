@@ -1,8 +1,5 @@
 *.DS_Store
 
-# Thumbnails
-._*
-
 # Files that might appear in the root of a volume
 .DocumentRevisions-V100
 .fseventsd
@@ -28,11 +25,6 @@ Thumbs.db
 ehthumbs.db
 ehthumbs_vista.db
 
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
 
 # Compiled class file
 *.class
@@ -40,12 +32,8 @@ $RECYCLE.BIN/
 # Log file
 *.log
 
-
+# Maven files
 target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
