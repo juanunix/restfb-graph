@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.LogManager;
 
 /**
- * Crawler for crawling posts and comments from fb-page
+ * Crawler for crawling posts from fb-page
  *
  * @author delsner
  */

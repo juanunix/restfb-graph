@@ -23,7 +23,7 @@ public class CsvFileWriter {
 
     // CSV file headers
     private static final String POST_FILE_HEADER = "id,name,message,story,link,description,created_time,likes,shares,comments";
-    private static final String COMMENT_FILE_HEADER = "id,message";
+    private static final String COMMENT_FILE_HEADER = "id,message,created_time,like_count,user_id,user_name,parent_id,parent_message,parent_user_name";
 
     public static void writePosts(String fileName, List<Post> posts) {
 
@@ -83,7 +83,7 @@ public class CsvFileWriter {
             fileWriter = new OutputStreamWriter(new FileOutputStream(fileName), Charset.forName("UTF-8").newEncoder());
 
             // Write the CSV file header and add new line
-            fileWriter.append(POST_FILE_HEADER.toString());
+            fileWriter.append(COMMENT_FILE_HEADER.toString());
             fileWriter.append(NEW_LINE_SEPARATOR);
 
             // Write posts to csv file
@@ -92,6 +92,21 @@ public class CsvFileWriter {
                 fileWriter.append(COMMA_DELIMITER);
                 String message = comment.getMessage() != null ? formatText(comment.getMessage()) : "";
                 fileWriter.append(message);
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(comment.getCreatedTime().toString());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(comment.getLikeCount() != null ? comment.getLikeCount().toString() : "");
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(comment.getFrom().getId());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(comment.getFrom().getName());
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(comment.getParent() != null ? comment.getParent().getId(): "");
+                fileWriter.append(COMMA_DELIMITER);
+                String messageParent = comment.getParent() != null && comment.getParent().getMessage() != null ? formatText(comment.getParent().getMessage()) : "";
+                fileWriter.append(messageParent);
+                fileWriter.append(COMMA_DELIMITER);
+                fileWriter.append(comment.getParent() != null && comment.getParent().getFrom() != null ? comment.getParent().getFrom().getName() : "");
                 fileWriter.append(NEW_LINE_SEPARATOR);
             }
         } catch (Exception e) {

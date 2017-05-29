@@ -41,6 +41,20 @@
                             </arguments>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>get-comments-from-post</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.fbcrawler.FbCrawlerCommentsRunner</mainClass>
+                            <arguments>
+                                <argument>
+                                    ${access_token}
+                                </argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
         </plugins>
